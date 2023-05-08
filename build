@@ -1,0 +1,11 @@
+#!/bin/bash
+export MT_REPO="https://github.com/minetest/minetest_game"
+export MT_VER=$( git ls-remote --tags ${MT_REPO} | grep "refs/tags/[0-9]" | grep -v -e "{}" -e "rc[0-9]" | awk '{print $2}' | sed "s/refs\/tags\///" | sort -V | uniq | tail -1)
+
+export MC_REPO="https://git.minetest.land/MineClone2/MineClone2"
+export MC_VER=$( git ls-remote --tags ${MC_REPO} | grep "refs/tags/[0-9]" | grep -v -e "{}" -e "rc[0-9]" | awk '{print $2}' | sed "s/refs\/tags\///" | sort -V | uniq | tail -1)
+
+sed -e "s/^ENV MT_VER=.*/ENV MT_VER=${MT_VER}/" -i Containerfile
+sed -e "s/^ENV MC_VER=.*/ENV MC_VER=${MC_VER}/" -i Containerfile
+
+podman build --layers --force-rm --tag mineclone2 -f Containerfile .
