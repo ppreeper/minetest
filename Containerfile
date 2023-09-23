@@ -4,7 +4,7 @@ ENV MT_REPO="https://github.com/minetest/minetest_game"
 ENV MT_VER=5.7.0
 
 ENV MC_REPO="https://git.minetest.land/MineClone2/MineClone2"
-ENV MC_VER=0.83.0
+ENV MC_VER=0.83.1
 
 RUN apk add --no-cache minetest-server git
 
