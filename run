@@ -5,8 +5,8 @@ podman run -d \
   -e PGID=1000 \
   -e TZ=Etc/UTC \
   -e CLI_ARGS="--gameid mineclone2 --port 30001" \
-  -p 30001:30001/udp \
+  -p 30001:30000/udp \
   -v ${PWD}/worlds:/config/.minetest/worlds \
   --restart unless-stopped \
-  localhost/mineclone2:latest
+  ghcr.io/ppreeper/minetest:main
 
