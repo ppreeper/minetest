@@ -9,3 +9,4 @@ podman run -d \
   -v ${PWD}/worlds:/config/.minetest/worlds \
   --restart unless-stopped \
   localhost/mineclone2:latest
+
